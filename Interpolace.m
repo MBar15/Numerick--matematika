@@ -1,3 +1,25 @@
+% Polynomy jsou jednoduché ale oscilují mimo definované body a výrazně na
+% u vedle okrajovách bodů
+% polynomy max n řádu
+
+
+% základní polynom
+    % musíme řešit soustavu rovnic
+    % Při řešení má matice nenulová Vandermodův determinant (at je to cokoliv)
+    % a pak při větším počtu bodů je MATICE špatně podmíněna
+    % U polynomů je polynom řádu n,ale jeho nejvyší člen je x^(x_počet_bodů - 1)
+    % Existuje právě jeden polynom řádu n pro dané body
+
+% lagrangeův polynom
+    % nemusíme řešit soustavu rovnic
+    % algebraickou úpravou dostaneme stejný polynom jako pomocí základního
+    
+% newtonův polynom
+    % kombinace předešlých, kdy řešíme soustavu rovnic ale má
+    % trojúhelníkovou strukturu (difference, a proto matice trojúhelníková)
+    % zápis výsledného polynomu je analogie taylorova polynomu
+
+
 xi =[ -2.3; -1.3; 0.6; 1.5; 2.8; 3.3; 4.6; 5.9; 7.8; 9.3];
 yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 
@@ -24,7 +46,7 @@ yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 % x_length = length(xi)
 % M = []
 % 
-% %M(:,end+1) = xi
+% 
 % for i = 0 : x_length-1
 %     M(:,end+1) = xi.^i
 % end
@@ -62,8 +84,6 @@ yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 % plot(xi,yi,'r.')
 % hold on
 % fplot(pn,[-3,10],'color','blue')
-
-
 
 
 
