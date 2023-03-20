@@ -1,7 +1,7 @@
 xi =[ -2.3; -1.3; 0.6; 1.5; 2.8; 3.3; 4.6; 5.9; 7.8; 9.3];
 yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 
-
+% pro odstranění komentářů (které jsou tvořeny % pokud už nevíte, stačí označit oblasti a stisknout CTRL+t pro zakometářování CTRL+r)
 
 % základní polynom -----------------------------------------------------
 % pn(x) = a0 + a1*x + a2*x^2 + an*x^n
@@ -18,6 +18,29 @@ yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 % hold on
 % fplot(pn,[-3,10],'color','blue')
 % 
+
+% % automatizace základního
+% syms x
+% x_length = length(xi)
+% M = []
+% 
+% %M(:,end+1) = xi
+% for i = 0 : x_length-1
+%     M(:,end+1) = xi.^i
+% end
+% 
+% b = yi
+% a = M\b
+% 
+% pn =  0
+% 
+% for i = 1 : x_length
+%     pn = pn + a(i)*x^(i-1);
+% end
+% 
+% plot(xi,yi,'r.')
+% hold on
+% fplot(pn,[-3,10],'color','blue')
 
 % Lagrangeuv tvar --------------------------------------------------------
 % % pn(x) = f0(x)*y0 + f1(x)*y1 ..... fn(x)*yn
