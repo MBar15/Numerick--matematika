@@ -1,3 +1,6 @@
+clear all
+close all
+clc
 % Polynomy jsou jednoduché ale oscilují mimo definované body a výrazně na
 % u vedle okrajovách bodů
 % polynomy max n řádu
@@ -85,5 +88,36 @@ yi =[ -51; -15; 8; 31; -47; -11; -101; -110; -223; -307]
 % hold on
 % fplot(pn,[-3,10],'color','blue')
 
+% newton ----------------------------------------------------------------
+xn = [0;3;4;1]
+yn = [2;1;5;3/2]
+
+df0 = yn
+n = length(xn)
+
+df1 = []
+df2 = []
+df3 = []
+
+% df1
+for i=1 : n-1
+    df1(i) = (df0(i+1)-df0(i))/(xn(i+1)-xn(i)) 
+end
+
+% df2
+for i=1 : n-2
+    df2(i) = (df1(i+1)-df1(i))/(xn(i+2)-xn(i)) 
+end
+
+% df3
+for i=1 : n-3
+    df3(i) = (df2(i+1)-df2(i))/(xn(i+3)-xn(i)) 
+end
+
+pn = @(x)df0(1) + df1(1)*(x-xn(1)) + df2(1)*(x-xn(1)).*(x-xn(2)) + df3(1)*(x-xn(1)).*(x-xn(2)).*(x-xn(3));
 
 
+
+plot(xn,yn,'r.')
+hold on
+fplot(pn,[0,5],'color','blue')
