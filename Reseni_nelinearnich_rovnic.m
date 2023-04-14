@@ -2,7 +2,7 @@ clc;
 clear all;
 close all;
 
-
+%%
 % Puleni intervalu (Binary) -----------------------------
 
 % f = @(x) 2*x + 2 - exp(x);
@@ -50,7 +50,7 @@ close all;
 % end
 % x2 =x
 
-
+%%
 % Newtonova metoda ------------------------------------------------------
 f = @(x) x - 4*cos(x)^2
 df1 = @(x) 1+8*cos(x)*sin(x)
@@ -155,3 +155,28 @@ end
 koren(3) = x;
 
 koren
+
+%% Regula falsi
+f = @(x) 10*cos(x-1) - x^2 + 2*x - 1 % = 0
+eps = 1e-3
+a = 2.3
+b = 2.4
+xprev = a 
+xk = 5;
+ak = a;
+bk = b;
+diff = 1
+while diff > eps
+    xk = ak - (bk - ak)/(f(bk)-f(ak))*f(ak);
+    if f(xk) == 0
+        break;
+    end
+    if f(ak)*f(xk) < 0 
+        bk = xk;
+    elseif f(bk)*f(xk) < 0
+        ak = xk
+    end
+    diff = abs(xk - xprev);
+    xprev = xk;
+end
+xk
